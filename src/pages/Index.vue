@@ -4,24 +4,27 @@
     <p>The below images should be downloaded locally using a plugin.</p>
 
     <div>
-      <div v-for="(edge, index) in $page.allContentfulAssets.edges">
-        <pre>
-          <img :src="edge.node.localFile" width="200" alt="">
-        </pre>
+      <div
+        v-for="(edge, index) in $page.allContentfulBlockFullWidthMedia.edges"
+      >
+        <pre>{{ edge.node.media.localFile.src }}</pre>
+        <img :src="edge.node.media.localFile.src" width="200" alt="" />
       </div>
     </div>
   </Layout>
 </template>
 
 <page-query>
-query allContentfulAsset {
-  allContentfulAssets: allContentfulAsset {
+query allContentfulBlockFullWidthMedia {
+  allContentfulBlockFullWidthMedia: allContentfulBlockFullWidthMedia {
     edges {
       node {
-        file {
-          url
+        media {
+          file {
+            url
+          },
+          localFile
         }
-        localFile
       }
     }
   }
