@@ -17,5 +17,15 @@ module.exports = {
         typeName: "Contentful",
       },
     },
+    {
+      use: "@noxify/gridsome-plugin-remote-image",
+      options: {
+        cache: false,
+        typeName: "ContentfulAsset",
+        sourceField: "file.url",
+        targetField: "localFile",
+        targetPath: "src/assets/cf/remoteImage",
+      },
+    },
   ],
 };
